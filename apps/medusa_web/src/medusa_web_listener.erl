@@ -70,7 +70,9 @@ consume_headers(Socket) ->
     end.
 
 respond(Socket, 'GET', {abs_path, <<"/">>}) ->
-    send_html(Socket, 200, medusa_web_page:render(medusa_core_server:get_count()));
+    Count = medusa_core_server:get_count(),
+    Bumps = medusa_core_history_server:get_bumps(),
+    send_html(Socket, 200, medusa_web_page:render(Count, Bumps));
 respond(Socket, 'GET', {abs_path, <<"/bump">>}) ->
     medusa_core_server:bump(),
     send_redirect(Socket, "/");

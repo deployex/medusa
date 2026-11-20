@@ -24,6 +24,14 @@ init([]) ->
     },
     ChildSpecs = [
         #{
+            id => medusa_core_history_server,
+            start => {medusa_core_history_server, start_link, []},
+            restart => permanent,
+            shutdown => 5000,
+            type => worker,
+            modules => [medusa_core_history_server]
+        },
+        #{
             id => medusa_core_server,
             start => {medusa_core_server, start_link, []},
             restart => permanent,

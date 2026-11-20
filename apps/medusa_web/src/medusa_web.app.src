@@ -1,6 +1,6 @@
 {application, medusa_web, [
     {description, "Minimal HTTP front end for medusa_core"},
-    {vsn, "0.1.0"},
+    {vsn, "0.2.0"},
     {registered, [medusa_web_sup, medusa_web_listener]},
     {mod, {medusa_web_app, []}},
     {applications, [
