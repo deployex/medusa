@@ -1,0 +1,15 @@
+{application, medusa_web, [
+    {description, "Minimal HTTP front end for medusa_core"},
+    {vsn, "0.1.0"},
+    {registered, [medusa_web_sup, medusa_web_listener]},
+    {mod, {medusa_web_app, []}},
+    {applications, [
+        kernel,
+        stdlib,
+        medusa_core
+    ]},
+    {env, []},
+    {modules, []},
+    {licenses, ["Apache-2.0"]},
+    {links, []}
+ ]}.
