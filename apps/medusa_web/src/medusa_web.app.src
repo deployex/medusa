@@ -8,7 +8,7 @@
         stdlib,
         medusa_core
     ]},
-    {env, []},
+    {env, [{port, 8090}]},
     {modules, []},
     {licenses, ["Apache-2.0"]},
     {links, []}
