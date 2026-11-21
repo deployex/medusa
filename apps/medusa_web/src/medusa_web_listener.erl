@@ -14,7 +14,7 @@
 -export([start_link/0]).
 -export([init/1, handle_call/3, handle_cast/2, handle_info/2]).
 
--define(PORT, 8080).
+-define(DEFAULT_PORT, 8090).
 -define(ACCEPT_TIMEOUT, 1000).
 -define(RECV_TIMEOUT, 5000).
 
@@ -22,7 +22,8 @@ start_link() ->
     gen_server:start_link({local, ?MODULE}, ?MODULE, [], []).
 
 init([]) ->
-    {ok, ListenSocket} = gen_tcp:listen(?PORT, [
+    Port = get_port(),
+    {ok, ListenSocket} = gen_tcp:listen(Port, [
         binary,
         {packet, http_bin},
         {active, false},
@@ -50,6 +51,15 @@ handle_info(_Info, State) ->
     {noreply, State}.
 
 %% internal functions
+
+%% DeployEx injects the PORT environment variable per replica (see
+%% replica_ports in deployex.yaml/dev.override.exs). Falling back to the
+%% sys.config/app env value keeps this runnable outside DeployEx too.
+get_port() ->
+    case os:getenv("PORT") of
+        false -> application:get_env(medusa_web, port, ?DEFAULT_PORT);
+        PortStr -> list_to_integer(PortStr)
+    end.
 
 handle_connection(Socket) ->
     case gen_tcp:recv(Socket, 0, ?RECV_TIMEOUT) of

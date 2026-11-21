@@ -1,6 +1,6 @@
 {application, medusa_web, [
     {description, "Minimal HTTP front end for medusa_core"},
-    {vsn, "0.2.2"},
+    {vsn, "0.2.3"},
     {registered, [medusa_web_sup, medusa_web_listener]},
     {mod, {medusa_web_app, []}},
     {applications, [
@@ -8,7 +8,7 @@
         stdlib,
         medusa_core
     ]},
-    {env, []},
+    {env, [{port, 8090}]},
     {modules, []},
     {licenses, ["Apache-2.0"]},
     {links, []}

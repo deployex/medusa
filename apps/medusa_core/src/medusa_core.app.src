@@ -1,11 +1,13 @@
 {application, medusa_core, [
     {description, "Stateful counter server used to exercise rebar3_jellyfish_plugin hot upgrades"},
-    {vsn, "0.2.2"},
+    {vsn, "0.2.3"},
     {registered, [medusa_core_sup, medusa_core_server, medusa_core_history_server]},
     {mod, {medusa_core_app, []}},
     {applications, [
         kernel,
-        stdlib
+        stdlib,
+        inets,
+        ssl
     ]},
     {env, []},
     {modules, []},

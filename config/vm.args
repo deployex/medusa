@@ -1,6 +1,7 @@
--sname medusa
+-sname ${RELEASE_NODE}
 
--setcookie medusa_cookie
+-setcookie ${RELEASE_COOKIE}
+${RELEASE_SSL_OPTIONS}
 
 +K true
 +A30
