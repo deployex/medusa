@@ -12,7 +12,7 @@
 -behaviour(gen_server).
 
 -export([start_link/0]).
--export([init/1, handle_call/3, handle_cast/2, handle_info/2]).
+-export([init/1, handle_call/3, handle_cast/2, handle_info/2, code_change/3]).
 
 -define(DEFAULT_PORT, 8090).
 -define(ACCEPT_TIMEOUT, 1000).
@@ -49,6 +49,10 @@ handle_call(_Request, _From, State) ->
 
 handle_info(_Info, State) ->
     {noreply, State}.
+
+code_change(_OldVsn, State, _Extra) ->
+    io:format("( ͡° ͜ʖ ͡°)_/¯ medusa_web_listener just hot-upgraded itself"),
+    {ok, State}.
 
 %% internal functions
 
