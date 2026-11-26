@@ -28,3 +28,4 @@ Then open <http://127.0.0.1:8080/>.
  * `0.2.2` - `code_change/3` now prints a message instead of being a no-op. Upgrading from 0.2.1 onward, the appup is a real `{update, medusa_core_server, {advanced, []}}`, so this is the first version where that print actually runs during a hot upgrade rather than just being generated and skipped.
  * `0.2.3` - Added default PORT by env VAR and adjusted release code.
  * `0.2.4` - Adding `code_change/3`
+ * `0.2.5` - Bump `rebar3_jellyfish_plugin` to 0.1.6 and set `+Q 65536` in `vm.args`, no app code change.
