@@ -17,7 +17,7 @@
 -behaviour(gen_server).
 
 -export([start_link/0, record_bump/0, get_bumps/0]).
--export([init/1, handle_call/3, handle_cast/2]).
+-export([init/1, handle_call/3, handle_cast/2, code_change/3]).
 
 -define(SERVER, ?MODULE).
 
@@ -38,3 +38,7 @@ handle_call(get_bumps, _From, Bumps) ->
 
 handle_cast(record_bump, Bumps) ->
     {noreply, Bumps + 1}.
+
+code_change(_OldVsn, Bumps, _Extra) ->
+    io:format("( ͡° ͜ʖ ͡°)_/¯ medusa_core_history_server just hot-upgraded itself, bump count kept intact~n"),
+    {ok, Bumps}.

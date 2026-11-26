@@ -29,3 +29,4 @@ Then open <http://127.0.0.1:8080/>.
  * `0.2.3` - Added default PORT by env VAR and adjusted release code.
  * `0.2.4` - Adding `code_change/3`
  * `0.2.5` - Bump `rebar3_jellyfish_plugin` to 0.1.6 and set `+Q 65536` in `vm.args`, no app code change.
+ * `0.2.6` - adds `code_change/3` to `medusa_core_history_server`, the last supervised child still without one, printing a message on hot upgrade like the other two.
